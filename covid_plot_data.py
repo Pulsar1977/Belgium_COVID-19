@@ -97,12 +97,7 @@ def plot_all(plot_settings, data):
     ax21, ax22 = plot2(plot_settings, data, ax[1], xmin, xmax, ymin=-100, ymax=400)
     ax31, ax32 = plot3(plot_settings, data, ax[2], xmin, xmax, ymin=-400, ymax=9000)
 
-    ax11.legend(loc='upper left', ncol=3, handlelength=1.4, labelspacing=0.12,
-                columnspacing=1.2, fontsize=14)
-    ax21.legend(loc='upper left')
-    ax31.legend(loc='upper left')
-
-    plt.savefig('Belgium_total_2010-2020.png', dpi=300, format='png')
+    plt.savefig('Belgium_total_2010-2020.png', dpi=150, format='png')
     plt.savefig('Belgium_total_2010-2020.pdf', dpi=150, format='pdf')
     plt.savefig('Belgium_total_2010-2020.svg', dpi=150, format='svg')
 
@@ -124,6 +119,8 @@ def plot1(plot_settings, data, ax1, xmin, xmax, ymin, ymax):
     ax1.plot(xprev, ymean, color='black', lw=thick, label='2010-2019 mean', zorder=2.5)
     ax1.plot(x2020, data.all_2020['Deaths'](x2020), color='red', lw=thick, label='2020 (all)', zorder=3)
     ax1.plot(xnon, ynon, color=(1,100/255,0), lw=2.5, zorder=2.5, label='2020 (non-COVID)')
+    ax1.legend(loc='upper left', ncol=3, handlelength=1.4, labelspacing=0.12,
+               columnspacing=1.2, fontsize=14)    
     return ax1, ax2
 
 
@@ -146,6 +143,7 @@ def plot2(plot_settings, data, ax1, xmin, xmax, ymin, ymax):
              label='All excess deaths 2020 w.r.t. 2010-2019 mean')
     ax1.plot(xnon, ynon_cum, color=(1,100/255,0), lw=2.5, zorder=2.5,
              label='Non-COVID excess deaths 2020')
+    ax1.legend(loc='upper left')
     return ax1, ax2
 
 
@@ -165,6 +163,7 @@ def plot3(plot_settings, data, ax1, xmin, xmax, ymin, ymax):
     cuminit = data.all_2020['Cumexcess'](xcum[0])
     ax1.plot(xcum, data.all_2020['Cumexcess'](xcum) - cuminit + 1, color='red',
              lw=thick, zorder=3, label='Cumulative excess deaths since Mar 10, 2020')
+    ax1.legend(loc='upper left')
     return ax1, ax2
 
 
