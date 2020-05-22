@@ -92,7 +92,7 @@ def plot_all(plot_settings, data):
     fig.tight_layout(rect=[0.005, -0.005, 1, 0.96])
     plt.suptitle('Belgium: daily deaths 2010-2020', y=0.98)
 
-    xmin, xmax = month_day_str_to_daynum('Jan 24'), month_day_str_to_daynum('May 8')
+    xmin, xmax = month_day_str_to_daynum('Jan 21'), month_day_str_to_daynum('May 11')
     ax11, ax12 = plot1(plot_settings, data, ax[0], xmin, xmax, ymin=0, ymax=700)
     ax21, ax22 = plot2(plot_settings, data, ax[1], xmin, xmax, ymin=-100, ymax=400)
     ax31, ax32 = plot3(plot_settings, data, ax[2], xmin, xmax, ymin=-400, ymax=9000)
@@ -120,7 +120,7 @@ def plot1(plot_settings, data, ax1, xmin, xmax, ymin, ymax):
     ax1.plot(x2020, data.all_2020['Deaths'](x2020), color='red', lw=thick, label='2020 (all)', zorder=3)
     ax1.plot(xnon, ynon, color=(1,100/255,0), lw=2.5, zorder=2.5, label='2020 (non-COVID)')
     ax1.legend(loc='upper left', ncol=3, handlelength=1.4, labelspacing=0.12,
-               columnspacing=1.2, fontsize=14)    
+               columnspacing=1.2, fontsize=14)
     return ax1, ax2
 
 
