@@ -89,13 +89,13 @@ def plot_all(plot_settings, data):
     plt.rc('axes', labelweight=500)
     plt.rc('figure', titleweight='bold', titlesize=26)
     fig, ax = plt.subplots(3, 1, figsize=(10,14), dpi=150)
-    fig.tight_layout(rect=[0.005, -0.005, 1, 0.96])
+    fig.tight_layout(rect=[0.01, -0.005, 1, 0.96])
     plt.suptitle('Belgium: daily deaths 2010-2020', y=0.98)
 
-    xmin, xmax = month_day_str_to_daynum('Jan 15'), month_day_str_to_daynum('May 18')
+    xmin, xmax = month_day_str_to_daynum('Jan 15'), month_day_str_to_daynum('May 25')
     ax11, ax12 = plot1(plot_settings, data, ax[0], xmin, xmax, ymin=0, ymax=700)
     ax21, ax22 = plot2(plot_settings, data, ax[1], xmin, xmax, ymin=-100, ymax=400)
-    ax31, ax32 = plot3(plot_settings, data, ax[2], xmin, xmax, ymin=-500, ymax=9500)
+    ax31, ax32 = plot3(plot_settings, data, ax[2], xmin, xmax, ymin=-500, ymax=10000)
 
     plt.savefig('Belgium_total_2010-2020.png', dpi=150, format='png')
     plt.savefig('Belgium_total_2010-2020.pdf', dpi=150, format='pdf')
@@ -140,7 +140,7 @@ def plot2(plot_settings, data, ax1, xmin, xmax, ymin, ymax):
                  arrowprops=dict(width=3.5, headwidth=10, shrink=3, facecolor='darkgoldenrod'))
     ax1.axhline(0, color="black", lw=thick, zorder=2.5)
     ax1.plot(x2020, data.all_2020['Excess'](x2020), color='red', lw=thick, zorder=3,
-             label='All excess deaths 2020 w.r.t. 2010-2019 mean')
+             label="All excess deaths 2020 w.r.t. '10-'19 mean")
     ax1.plot(xnon, ynon_cum, color=(1,100/255,0), lw=2.5, zorder=2.5,
              label='Non-COVID excess deaths 2020')
     ax1.legend(loc='upper left')
