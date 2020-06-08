@@ -63,3 +63,9 @@ deaths, to be used as the baseline for the 2020 excess deaths. Default: '2010-20
 #### Requirements
 
 Python 3.6+, pandas, numpy, matplotlib.
+
+---
+
+#### Output
+
+![](Belgium_total_2010-2020.png)
