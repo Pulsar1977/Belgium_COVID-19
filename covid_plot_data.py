@@ -92,7 +92,7 @@ def plot_all(plot_settings, data):
     fig.tight_layout(rect=[0.01, -0.005, 1, 0.96])
     plt.suptitle('Belgium: daily deaths 2010-2020', y=0.98)
 
-    xmin, xmax = month_day_str_to_daynum('Jan 15'), month_day_str_to_daynum('May 25')
+    xmin, xmax = month_day_str_to_daynum('Jan 20'), month_day_str_to_daynum('Jun 1')
     ax11, ax12 = plot1(plot_settings, data, ax[0], xmin, xmax, ymin=0, ymax=700)
     ax21, ax22 = plot2(plot_settings, data, ax[1], xmin, xmax, ymin=-100, ymax=400)
     ax31, ax32 = plot3(plot_settings, data, ax[2], xmin, xmax, ymin=-500, ymax=10000)
@@ -116,9 +116,9 @@ def plot1(plot_settings, data, ax1, xmin, xmax, ymin, ymax):
     ax1.fill_between(xprev, ymean-2*ystd, ymean+2*ystd, color='darkslategray', alpha=0.15)
     for year, color in zip(prev_years_str, plot_settings.colors):
         ax1.plot(xprev, data.all_prev[year](xprev), color=color, lw=thin, label=year, zorder=2.5)
-    ax1.plot(xprev, ymean, color='black', lw=thick, label='2010-2019 mean', zorder=2.5)
-    ax1.plot(x2020, data.all_2020['Deaths'](x2020), color='red', lw=thick, label='2020 (all)', zorder=3)
-    ax1.plot(xnon, ynon, color=(1,100/255,0), lw=2.5, zorder=2.5, label='2020 (non-COVID)')
+    ax1.plot(xprev, ymean, color='black', lw=thick, label="'10-'19 mean", zorder=2.5)
+    ax1.plot(x2020, data.all_2020['Deaths'](x2020), color='red', lw=thick, label="'20 (all)", zorder=3)
+    ax1.plot(xnon, ynon, color=(1,100/255,0), lw=2.5, zorder=2.5, label="'20 (non-COV)")
     ax1.legend(loc='upper left', ncol=3, handlelength=1.4, labelspacing=0.11,
                columnspacing=1.2, fontsize=14)
     return ax1, ax2
@@ -140,7 +140,7 @@ def plot2(plot_settings, data, ax1, xmin, xmax, ymin, ymax):
                  arrowprops=dict(width=3.5, headwidth=10, shrink=3, facecolor='darkgoldenrod'))
     ax1.axhline(0, color="black", lw=thick, zorder=2.5)
     ax1.plot(x2020, data.all_2020['Excess'](x2020), color='red', lw=thick, zorder=3,
-             label="All excess deaths 2020 w.r.t. '10-'19 mean")
+             label="All excess deaths '20 w.r.t. '10-'19 mean")
     ax1.plot(xnon, ynon_cum, color=(1,100/255,0), lw=2.5, zorder=2.5,
              label='Non-COVID excess deaths 2020')
     ax1.legend(loc='upper left')
